@@ -1,6 +1,6 @@
 import Directory from "../../components/directory/Directory";
 
-function Home() {
+const Home = () => {
     const categories = [
         {
           id: '1',

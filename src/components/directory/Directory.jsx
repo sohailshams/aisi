@@ -1,6 +1,6 @@
 import Category from "../category-item/Category"
 
-function Directory({categories}) {
+const Directory = ({categories}) => {
   return (
     <div className="flex w-full flex-wrap	justify-between">
       {categories.map((category) => (

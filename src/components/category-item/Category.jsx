@@ -1,4 +1,4 @@
-function Category({category}) {
+const Category = ({category}) => {
     const {name, imageUrl} = category;
 
   return (
