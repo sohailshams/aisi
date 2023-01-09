@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Link>
                     contact
                 </Link>
-                <Link>
+                <Link to='/sign-in'>
                     sign in
                 </Link>
                 <Link>
