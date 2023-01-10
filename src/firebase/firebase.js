@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -60,3 +60,8 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   return userDocRef;
 
 };
+
+// Signout function
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedLister = (callback) => onAuthStateChanged(auth, callback);

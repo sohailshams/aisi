@@ -1,7 +1,15 @@
+import { UserContext } from '../../contexts/user.context';
+import { signOutUser } from '../../firebase/firebase';
+
 import { Outlet, Link } from 'react-router-dom';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+
 
 const Navbar = () => {
+    const { currentUser } = useContext(UserContext);
+
+    // Sign out user
+    const signOutHandler = () => signOutUser();
 
     return (
       <Fragment>
@@ -16,9 +24,16 @@ const Navbar = () => {
                 <Link>
                     contact
                 </Link>
-                <Link to='/sign-in'>
+                {currentUser ? (
+                    <span onClick={signOutHandler} className="cursor-pointer">
+                        signout
+                    </span>
+                ) : (
+                    <Link to='/sign-in'>
                     sign in
                 </Link>
+                )}
+               
                 <Link>
                     cart
                 </Link>
