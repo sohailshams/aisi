@@ -18,7 +18,7 @@ const Navbar = () => {
                 <h2>aisi.</h2>
             </Link>
             <div className='space-x-4'>
-                <Link>
+                <Link to='/shop'>
                     shop
                 </Link>
                 <Link>
