@@ -1,13 +1,20 @@
+import { Fragment, useContext } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+
+import CartIcon from '../../components/cart-icon/CartIcon';
+import CartDropdown from '../../components/cart-dropdown/CartDropdown';
+
 import { UserContext } from '../../contexts/user.context';
+import { CartContext } from '../../contexts/cart.context';
+
 import { signOutUser } from '../../firebase/firebase';
 
-import { Outlet, Link } from 'react-router-dom';
-import { Fragment, useContext } from 'react';
-import CartIcon from '../../components/cart/CartIcon';
 
 
 const Navbar = () => {
     const { currentUser } = useContext(UserContext);
+
+    const { isCartOpen } = useContext(CartContext);
 
     // Sign out user
     const signOutHandler = () => signOutUser();
@@ -37,6 +44,8 @@ const Navbar = () => {
                 <CartIcon />
             </div>
         </nav>
+        {/* Conditionally render CartDropdown component based on isCartOpen */}
+        {isCartOpen && <CartDropdown />}
         <Outlet />
       </Fragment>
     )
