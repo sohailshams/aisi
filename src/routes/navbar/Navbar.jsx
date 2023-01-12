@@ -3,6 +3,7 @@ import { signOutUser } from '../../firebase/firebase';
 
 import { Outlet, Link } from 'react-router-dom';
 import { Fragment, useContext } from 'react';
+import CartIcon from '../../components/cart/CartIcon';
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
             <Link to='/'>
                 <h2>aisi.</h2>
             </Link>
-            <div className='space-x-4'>
+            <div className='space-x-4 flex'>
                 <Link to='/shop'>
                     shop
                 </Link>
@@ -33,10 +34,7 @@ const Navbar = () => {
                     sign in
                 </Link>
                 )}
-               
-                <Link>
-                    cart
-                </Link>
+                <CartIcon />
             </div>
         </nav>
         <Outlet />
