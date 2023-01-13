@@ -6,7 +6,7 @@ import { CartContext } from '../../contexts/cart.context';
 
 const CartIcon = () => {
   // Get isCartOpen & setIsCartOpen from the CartContext
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, totalCartItems } = useContext(CartContext);
 
   // A function to open and close cart dropdown
   const cartToggleHandler = () => setIsCartOpen(!isCartOpen);
@@ -14,7 +14,7 @@ const CartIcon = () => {
   return (
     <div className='flex items-center justify-center cursor-pointer relative' onClick={cartToggleHandler}>
         <ShoppingCartIcon className='w-6 h-6' />
-        <span className='absolute top-[.5px]'>0</span>
+        <span className='absolute top-[.5px]'>{totalCartItems}</span>
     </div>
   )
 }
