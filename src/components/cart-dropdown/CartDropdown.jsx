@@ -15,9 +15,8 @@ const CartDropdown = () => {
       navigate('/checkout');
     }
 
-
   return (
-    <div v>
+    <div>
         <div className='absolute w-[240px] h-[340px] border-2 border-black top-20 right-4 z-40 bg-white flex flex-col overflow-y-auto'>
             <div className="ml-4 mb-4">
                 {cartItems.map(item => <CartItem key={item.id} cartItem={item} />)}
@@ -28,4 +27,4 @@ const CartDropdown = () => {
   )
 }
 
-export default CartDropdown
+export default CartDropdown;
