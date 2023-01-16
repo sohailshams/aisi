@@ -1,23 +1,15 @@
-// import SHOP_DATA from '../../shop-data.json';
-import { useContext, Fragment } from 'react';
-import CategoryContainer from '../../components/category-container/CategoryContainer';
+import { Routes, Route } from "react-router-dom";
+import CategoriesContainer from "../categories-container/CategoriesContainer";
+import CategoryDetail from "../category-detail/CategoryDetail";
 
-import { CategoriesContext } from '../../contexts/categories.context';
 
 const Shop = () => {
-    const { categoriesMap } = useContext(CategoriesContext);
 
   return (
-      <Fragment>
-        {Object.keys(categoriesMap).map((title) => {
-          // Get products from the categoriesMap
-          const products = categoriesMap[title];
-
-          return (
-            <CategoryContainer key={title} title={title} products={products} />
-          )
-        })}
-      </Fragment>
+    <Routes>
+      <Route index element={<CategoriesContainer />} />
+      <Route path=":categoryName" element={<CategoryDetail />} />
+    </Routes>
   );
 };
 
