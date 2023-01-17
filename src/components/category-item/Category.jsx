@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const Category = ({category}) => {
-    const {name, imageUrl} = category;
+    const {name, imageUrl, route} = category;
+    const navigate = useNavigate();
+
+    const onNavigateHandler = () => navigate(route);
 
   return (
-    <div className="flex flex-auto h-60 w-[30%] justify-center border-2 border-black items-center mx-4 my-1.5 overflow-hidden">
+    <div className="flex flex-auto h-60 w-[30%] justify-center border-2 border-black items-center mx-4 my-1.5 overflow-hidden cursor-pointer" onClick={onNavigateHandler}>
           <div className="w-full h-full grid place-items-center hover:-translate-y-1 hover:scale-110 duration-[2000ms]" style={{
             backgroundImage: `url(${imageUrl})`,
             backgroundSize: 'cover',
