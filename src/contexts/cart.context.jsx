@@ -37,10 +37,16 @@ const removeItem = (cartItems, productToRemove) => {
         return cartItems.filter(cartItem => cartItem.id !== productToRemove.id);
 }
 
+// Get items from local storage  and set value to [] if no item found 
+const persistedCartItemsFromLocalStorage = JSON.parse(window.localStorage.getItem('persisted-items'));
+
+const persistedItemsInCart = persistedCartItemsFromLocalStorage ? (persistedCartItemsFromLocalStorage) : ([])
+
+
 export const CartContext = createContext({
     isCartOpen: false,
     setIsCartOpen: () => {},
-    cartItems: [],
+    cartItems: persistedItemsInCart,
     addItemToCart: () => {},
     totalCartItems: 0,
     removeItemFromCart: () => {},
@@ -54,7 +60,12 @@ export const CartProvider = ({children}) => {
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     // Initialize cart items state with []
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(persistedItemsInCart);
+
+    // Store items in local storage each time the state changes
+    useEffect(() => {
+    window.localStorage.setItem('persisted-items', JSON.stringify(cartItems));
+    }, [cartItems])
 
     // Initialize cart count state with 0
     const [totalCartItems, setTotalCartItems] = useState(0);
@@ -62,11 +73,14 @@ export const CartProvider = ({children}) => {
     // Initialize totalPrice with 0
     const [totalPrice, setTotalPrice] = useState(0);
 
+
     // Getting cart item's total count
     useEffect(() => {
         const newTotalCartItems = cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
         setTotalCartItems(newTotalCartItems);
     }, [cartItems])
+
+    
 
     // Getting cart item's total price
     useEffect(() => {
