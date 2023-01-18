@@ -21,8 +21,8 @@ const CheckoutItem = ({cartItem}) => {
     <div>
     <div className="flex justify-between py-4 items-center w-[50%] mx-auto max-[640px]:w-full">
         <img className="w-[80px] h-[90px]" src={imageUrl} alt={`${name}`} />
-        <div>
-            <h1 className="font-semibold w-30 max-[425px]:w-20">{name}</h1>
+        <div className="font-semibold w-[150px] max-[425px]:w-20">
+            <h1>{name}</h1>
             <div className="flex items-center">
                 <span className="text-2xl font-bold cursor-pointer" onClick={addItemHandler}>&#x2b;</span>
                 <span className="font-bold pl-1">|</span>

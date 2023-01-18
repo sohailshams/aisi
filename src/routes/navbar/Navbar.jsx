@@ -21,7 +21,7 @@ const Navbar = () => {
 
     return (
       <Fragment>
-        <nav className='flex justify-between pl-5 pr-5 py-7 font-semi-bold font-[Pacifico] text-lg'>
+        <nav className='flex justify-between pl-5 pr-5 py-7 font-semi-bold font-[Pacifico] text-lg sticky top-0 z-50 bg-white'>
             <Link to='/'>
                 <h2>aisi.</h2>
             </Link>
@@ -29,9 +29,9 @@ const Navbar = () => {
                 <Link to='/shop'>
                     shop
                 </Link>
-                <Link>
+                {/* <Link>
                     contact
-                </Link>
+                </Link> */}
                 {currentUser ? (
                     <span onClick={signOutHandler} className="cursor-pointer">
                         signout
